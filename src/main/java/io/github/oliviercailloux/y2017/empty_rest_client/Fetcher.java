@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2017.my_rest_client;
+package io.github.oliviercailloux.y2017.empty_rest_client;
 
 import static java.time.ZoneOffset.UTC;
 import static java.time.format.DateTimeFormatter.ISO_DATE_TIME;

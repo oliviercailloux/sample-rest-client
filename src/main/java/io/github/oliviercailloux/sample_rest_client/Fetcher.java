@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.y2017.empty_rest_client;
+package io.github.oliviercailloux.sample_rest_client;
 
 import static java.time.ZoneOffset.UTC;
 import static java.time.format.DateTimeFormatter.ISO_DATE_TIME;
@@ -10,7 +10,12 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Fetcher {
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = LoggerFactory.getLogger(Fetcher.class);
 
 	public static void main(String[] args) {
 		Fetcher fetcher = new Fetcher();
@@ -25,7 +30,7 @@ public class Fetcher {
 		/** https://jsonplaceholder.typicode.com/comments/2 */
 		String result = resolvedTarget.request(MediaType.TEXT_PLAIN).get(String.class);
 		client.close();
-		System.out.println(result);
+		LOGGER.info(result);
 	}
 
 	public void fromWikipedia() {
@@ -39,9 +44,9 @@ public class Fetcher {
 		/**
 		 * https://en.wikipedia.org/w/api.php?action=query&titles=Bertrand%20Russell&prop=revisions&rvprop=ids|timestamp|user
 		 */
-		System.out.println("Querying: " + resolvedTarget + ".");
+		LOGGER.info("Querying: " + resolvedTarget + ".");
 		String result = resolvedTarget.request(MediaType.TEXT_PLAIN).get(String.class);
 		client.close();
-		System.out.println(result);
+		LOGGER.info(result);
 	}
 }
